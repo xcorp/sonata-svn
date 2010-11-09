@@ -1,0 +1,13 @@
+sonata/about.py
+sonata/cli.py
+sonata/config.py
+sonata/current.py
+sonata/dbus_plugin.py
+sonata/info.py
+sonata/library.py
+sonata/main.py
+sonata/playlists.py
+sonata/pluginsystem.py
+sonata/preferences.py
+sonata/streams.py
+sonata/tagedit.py
