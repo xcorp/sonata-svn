@@ -1,0 +1,320 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+
+<!--
+
+`xsltproc -''-nonet \
+          -''-param man.charmap.use.subset "0" \
+          -''-param make.year.ranges "1" \
+          -''-param make.single.year.ranges "1" \
+          /usr/share/xml/docbook/stylesheet/nwalsh/manpages/docbook.xsl \
+          manpage.xml'
+
+A manual page <package>.<section> will be generated. You may view the
+manual page with: nroff -man <package>.<section> | less'. A typical entry
+in a Makefile or Makefile.am is:
+
+DB2MAN = /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl
+XP     = xsltproc -''-nonet -''-param man.charmap.use.subset "0"
+
+manpage.1: manpage.xml
+        $(XP) $(DB2MAN) $<
+
+The xsltproc binary is found in the xsltproc package. The XSL files are in
+docbook-xsl. A description of the parameters you can use can be found in the
+docbook-xsl-doc-* packages. Please remember that if you create the nroff
+version in one of the debian/rules file targets (such as build), you will need
+to include xsltproc and docbook-xsl in your Build-Depends control field.
+Alternatively use the xmlto command/package. That will also automatically
+pull in xsltproc and docbook-xsl.
+
+Notes for using docbook2x: docbook2x-man does not automatically create the
+AUTHOR(S) and COPYRIGHT sections. In this case, please add them manually as
+<refsect1> ... </refsect1>.
+
+To disable the automatic creation of the AUTHOR(S) and COPYRIGHT sections
+read /usr/share/doc/docbook-xsl/doc/manpages/authors.html. This file can be
+found in the docbook-xsl-doc-html package.
+
+Validation can be done using: `xmllint -''-noout -''-valid manpage.xml`
+
+General documentation about man-pages and man-page-formatting:
+man(1), man(7), http://www.tldp.org/HOWTO/Man-Page/
+
+-->
+  <!ENTITY dhsection   "1">
+  <!-- TITLE should be something like "User commands" or similar (see
+       http://www.tldp.org/HOWTO/Man-Page/q2.html). -->
+  <!ENTITY dhucpackage "sonata">
+  <!ENTITY dhpackage   "sonata">
+
+  <!ENTITY dhfirstname "Jack">
+  <!ENTITY dhsurname   "Kaliko">
+  <!ENTITY dhemail     "efrim@azylum.org">
+  <!-- username could also be set to "&firstname; &surname;".  -->
+  <!ENTITY dhusername  "&dhfirstname; &dhsurname;">
+
+  <!ENTITY dhpackage "sonata">
+  <!ENTITY release   "1.7">
+  <!ENTITY projecturl "http://codingteam.net/project/sonata">
+  <!ENTITY dhtitle     "&dhpackage; User Manual">
+  <!ENTITY dhucpackage "#UCPACKAGE#">
+]>
+
+<refentry>
+  <refentryinfo>
+    <title>&dhtitle;</title>
+    <productname>&dhpackage;</productname>
+    <authorgroup>
+      <author>
+       <firstname>&dhfirstname;</firstname>
+        <surname>&dhsurname;</surname>
+        <contrib></contrib>
+        <address>
+          <email>&dhemail;</email>
+        </address>
+      </author>
+    </authorgroup>
+    <copyright>
+        <year>2010</year>
+        <year>2011</year>
+      <holder>&dhusername;</holder>
+    </copyright>
+    <legalnotice>
+      <para>Permission is granted to copy, distribute and/or modify this
+        document under the terms of the GNU General Public License,
+        Version 2 or (at your option) any later version published by
+        the Free Software Foundation.</para>
+    </legalnotice>
+  </refentryinfo>
+  <refmeta>
+    <refentrytitle>&dhucpackage;</refentrytitle>
+    <manvolnum>&dhsection;</manvolnum>
+  </refmeta>
+  <refnamediv>
+    <refname>&dhpackage;</refname>
+    <refpurpose>GTK+ client for the Music Player Daemon</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+    <cmdsynopsis>
+      <command>&dhpackage;</command>
+      <arg choice="opt"><option>--toogle</option></arg>
+      <arg choice="opt"><option>--hidden</option></arg>
+      <arg choice="opt"><option>--visible</option></arg>
+      <arg choice="opt"><option>--no-start</option></arg>
+      <arg choice="opt"><option>--profile=</option><replaceable class="option">[NUM]</replaceable></arg>
+    </cmdsynopsis>
+    <cmdsynopsis>
+      <command>&dhpackage;</command>
+      <arg choice="opt"><option>play</option></arg>
+      <arg choice="opt"><option>pause</option></arg>
+      <arg choice="opt"><option>stop</option></arg>
+      <arg choice="opt"><option>next</option></arg>
+      <arg choice="opt"><option>prev</option></arg>
+      <arg choice="opt"><option>repeat</option></arg>
+      <arg choice="opt"><option>random</option></arg>
+      <arg choice="opt"><option>info</option></arg>
+      <arg choice="opt"><option>status</option></arg>
+    </cmdsynopsis>
+    <cmdsynopsis>
+      <command>&dhpackage;</command>
+      <!-- Normally the help and version options make the programs stop
+           right after outputting the requested information. -->
+      <group choice="opt">
+        <arg choice="plain">
+          <group choice="req">
+            <arg choice="plain"><option>-h</option></arg>
+            <arg choice="plain"><option>--help</option></arg>
+          </group>
+        </arg>
+        <arg choice="plain"><option>--version</option></arg>
+      </group>
+    </cmdsynopsis>
+  </refsynopsisdiv>
+  <refsect1 id="description">
+    <title>DESCRIPTION</title>
+    <para>This manual page documents briefly the
+      <command>&dhpackage;</command> commands.</para>
+    <para>Sonata is an elegant GTK+ music client for the Music Player Daemon (MPD).</para>
+  </refsect1>
+  <refsect1 id="options">
+    <title>OPTIONS</title>
+    <para>The program follows the usual GNU command line syntax,
+      with long options starting with two dashes (`-').  A summary of
+      options is included below.</para>
+    <variablelist>
+      <!-- Use the variablelist.term.separator and the
+           variablelist.term.break.after parameters to
+           control the term elements. -->
+        <varlistentry> <!-- HELP -->
+            <term><option>-h</option></term>
+            <term><option>--help</option></term>
+            <listitem>
+                <para>Print help and exit.</para>
+            </listitem>
+        </varlistentry>
+        <varlistentry> <!-- VERSION -->
+            <term><option>-v</option></term>
+            <term><option>--version</option></term>
+            <listitem>
+                <para>Print version and exit.</para>
+            </listitem>
+        </varlistentry>
+        <varlistentry><!-- VISIBLE -->
+            <term><option>--visible</option></term>
+            <listitem>
+                <para>Start app visible (requires systray)</para>
+            </listitem>
+        </varlistentry>
+        <varlistentry><!-- HIDDEN -->
+            <term><option>--hidden</option></term>
+            <listitem>
+                <para>Start app hidden (requires systray)</para>
+            </listitem>
+        </varlistentry>
+        <varlistentry><!-- TOGGLE -->
+            <term><option>-t</option></term>
+            <term><option>--toogle</option></term>
+            <listitem>
+                <para>Toggles whether the app is minimized to tray or visible (requires D-Bus)</para>
+            </listitem>
+        </varlistentry>
+        <varlistentry><!-- TOGGLE -->
+            <term><option>-n</option></term>
+            <term><option>--no-start</option></term>
+            <listitem>
+                <para>Don't start app if D-Bus commands fail</para>
+            </listitem>
+        </varlistentry>
+
+        <varlistentry><!-- POPUP -->
+            <term><option>-p</option></term>
+            <term><option>--popup</option></term>
+            <listitem>
+                <para>Popup song notification (requires D-Bus)</para>
+            </listitem>
+        </varlistentry>
+        <varlistentry><!-- PROFILE -->
+            <term><option>--profile</option></term>
+            <listitem>
+                <para>Start with profile [NUM]</para>
+            </listitem>
+        </varlistentry>
+        <varlistentry><!-- PLAY -->
+            <term><option>play</option></term>
+            <listitem>
+                <para>Play song in playlist</para>
+            </listitem>
+        </varlistentry>
+        <varlistentry><!-- PAUSE -->
+            <term><option>pause</option></term>
+            <listitem>
+                <para>Pause currently playing song</para>
+            </listitem>
+        </varlistentry>
+        <varlistentry><!-- STOP -->
+            <term><option>stop</option></term>
+            <listitem>
+                <para>Stop currently playing song</para>
+            </listitem>
+        </varlistentry>
+        <varlistentry><!-- NEXT -->
+            <term><option>next</option></term>
+            <listitem>
+                <para>Play next song in playlist</para>
+            </listitem>
+        </varlistentry>
+        <varlistentry><!-- PREV -->
+            <term><option>prev</option></term>
+            <listitem>
+                <para>Play previous song in playlist</para>
+            </listitem>
+        </varlistentry>
+        <varlistentry><!-- PP -->
+            <term><option>pp</option></term>
+            <listitem>
+                <para>Toggle play/pause; plays if stopped</para>
+            </listitem>
+        </varlistentry>
+        <varlistentry><!-- REPEAT -->
+            <term><option>repeat</option></term>
+            <listitem>
+                <para>Toggle repeat mode</para>
+            </listitem>
+        </varlistentry>
+        <varlistentry><!-- RANDOM -->
+            <term><option>random</option></term>
+            <listitem>
+                <para>Toggle random mode</para>
+            </listitem>
+        </varlistentry>
+        <varlistentry><!-- INFO -->
+            <term><option>info</option></term>
+            <listitem>
+                <para>Display current song info</para>
+            </listitem>
+        </varlistentry>
+        <varlistentry><!-- STATUS -->
+            <term><option>status</option></term>
+            <listitem>
+                <para>Display MPD status</para>
+            </listitem>
+        </varlistentry>
+    </variablelist>
+  </refsect1>
+  <refsect1 id="files">
+      <title>FILES</title>
+      <variablelist>
+          <varlistentry>
+              <term><filename>${XDG_CONFIG_HOME}/sonata/sonatarc</filename></term>
+              <listitem>
+                  <para>The per-user configuration file. Usually <envar>XDG_CONFIG_HOME</envar> is set to <filename>${HOME}/.config</filename>.</para>
+              </listitem>
+          </varlistentry>
+          <!--
+          <varlistentry>
+              <term><filename>${XDG_DATA_HOME}/sonata</filename></term>
+              <listitem>
+                  <para>History file. Usually <envar>XDG_DATA_HOME</envar> is set to <filename>${HOME}/.local/share</filename>.</para>
+              </listitem>
+          </varlistentry>
+          -->
+      </variablelist>
+  </refsect1>
+  <refsect1 id="environment">
+      <title>ENVIRONMENT</title>
+      <variablelist>
+          <varlistentry>
+              <term><envar>MPD_HOST</envar>, <envar>MPD_PORT</envar></term>
+              <listitem>
+                  <para>MPD_sima is following <command>mpc</command> documentation for <envar>MPD_HOST</envar> syntax, see <citerefentry><refentrytitle>mpc</refentrytitle><manvolnum>1</manvolnum></citerefentry> for further information.</para>
+              </listitem>
+          </varlistentry>
+      </variablelist>
+  </refsect1>
+  <refsect1 id="bugs">
+    <!-- Or use this section to tell about upstream BTS. -->
+    <title>BUGS</title>
+    <para>The upstream <acronym>BTS</acronym> can be found
+        at <ulink url="http://codingteam.net/project/sonata/bugs"/>.</para>
+  </refsect1>
+  <refsect1 id="feedback">
+    <title>FEEDBACK</title>
+    <para>The maintainer would be more than happy to here from you, don't hesitate to send feedback on the forge, via the upstream <acronym>BTS</acronym>, the forum or the chat room, all available on the forge at <ulink url="http://codingteam.net/project/sonata"/>.</para>
+    <para><acronym>XMPP</acronym> users are welcome to join the dedicated chat room at <ulink type="xmpp" url="sonata@conference.codingteam.net">sonata@conference.codingteam.net</ulink>.</para>
+  </refsect1>
+  <refsect1 id="see_also">
+    <title>SEE ALSO</title>
+    <!-- In alpabetical order. -->
+    <para><citerefentry>
+        <refentrytitle>mpc</refentrytitle>
+        <manvolnum>1</manvolnum>
+      </citerefentry>, <citerefentry>
+        <refentrytitle>mpd</refentrytitle>
+        <manvolnum>1</manvolnum>
+      </citerefentry></para>
+    <para><filename>/usr/share/doc/sonata/</filename> (on Debian system)</para>
+  </refsect1>
+</refentry>
+

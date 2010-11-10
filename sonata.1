@@ -1,72 +1,193 @@
-.TH SONATA 1 "October 20, 2006"
-.SH NAME
+'\" t
+.\"     Title: sonata
+.\"    Author: Jack Kaliko <efrim@azylum.org>
+.\" Generator: DocBook XSL-NS Stylesheets v1.75.2 <http://docbook.sf.net/>
+.\"      Date: 11/10/2010
+.\"    Manual: sonata User Manual
+.\"    Source: sonata
+.\"  Language: English
+.\"
+.TH "SONATA" "1" "11/10/2010" "sonata" "sonata User Manual"
+.\" -----------------------------------------------------------------
+.\" * Define some portability stuff
+.\" -----------------------------------------------------------------
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.\" http://bugs.debian.org/507673
+.\" http://lists.gnu.org/archive/html/groff/2009-02/msg00013.html
+.\" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.\" -----------------------------------------------------------------
+.\" * set default formatting
+.\" -----------------------------------------------------------------
+.\" disable hyphenation
+.nh
+.\" disable justification (adjust text to left margin only)
+.ad l
+.\" -----------------------------------------------------------------
+.\" * MAIN CONTENT STARTS HERE *
+.\" -----------------------------------------------------------------
+.SH "NAME"
 sonata \- GTK+ client for the Music Player Daemon
-.SH SYNOPSIS
-.B sonata
-[\fIOPTION\fR]
-.SH DESCRIPTION
-Sonata is an elegant GTK+ music client for the Music Player Daemon (MPD).
-.SH OPTIONS
-.TP
-.B \-h\fR, \fB\-\-help
-Show this help and exit
-.TP
-.B \-p\fR, \fB\-\-popup
-Popup song notification (requires D\-Bus)
-.TP
-.B \-t\fR, \fB\-\-toggle
-Toggles whether the app is minimized to tray or visible (requires D\-Bus)
-.TP
-.B \-v\fR, \fB\-\-version
-Show version information and exit
-.TP
-.B \-\-hidden
-Start app hidden (requires systray)
-.TP
-.B \-\-visible
+.SH "SYNOPSIS"
+.HP \w'\fBsonata\fR\ 'u
+\fBsonata\fR [\fB\-\-toogle\fR] [\fB\-\-hidden\fR] [\fB\-\-visible\fR] [\fB\-\-no\-start\fR] [\fB\-\-profile=\fR\fI[NUM]\fR]
+.HP \w'\fBsonata\fR\ 'u
+\fBsonata\fR [\fBplay\fR] [\fBpause\fR] [\fBstop\fR] [\fBnext\fR] [\fBprev\fR] [\fBrepeat\fR] [\fBrandom\fR] [\fBinfo\fR] [\fBstatus\fR]
+.HP \w'\fBsonata\fR\ 'u
+\fBsonata\fR [{\fB\-h\fR\ |\ \fB\-\-help\fR} | \fB\-\-version\fR]
+.SH "DESCRIPTION"
+.PP
+This manual page documents briefly the
+\fBsonata\fR
+commands\&.
+.PP
+Sonata is an elegant GTK+ music client for the Music Player Daemon (MPD)\&.
+.SH "OPTIONS"
+.PP
+The program follows the usual GNU command line syntax, with long options starting with two dashes (`\-\*(Aq)\&. A summary of options is included below\&.
+.PP
+\fB\-h\fR, \fB\-\-help\fR
+.RS 4
+Print help and exit\&.
+.RE
+.PP
+\fB\-v\fR, \fB\-\-version\fR
+.RS 4
+Print version and exit\&.
+.RE
+.PP
+\fB\-\-visible\fR
+.RS 4
 Start app visible (requires systray)
-.TP
-.B \-\-profile\=[NUM]
+.RE
+.PP
+\fB\-\-hidden\fR
+.RS 4
+Start app hidden (requires systray)
+.RE
+.PP
+\fB\-t\fR, \fB\-\-toogle\fR
+.RS 4
+Toggles whether the app is minimized to tray or visible (requires D\-Bus)
+.RE
+.PP
+\fB\-n\fR, \fB\-\-no\-start\fR
+.RS 4
+Don\*(Aqt start app if D\-Bus commands fail
+.RE
+.PP
+\fB\-p\fR, \fB\-\-popup\fR
+.RS 4
+Popup song notification (requires D\-Bus)
+.RE
+.PP
+\fB\-\-profile\fR
+.RS 4
 Start with profile [NUM]
-.TP
-.B play
+.RE
+.PP
+\fBplay\fR
+.RS 4
 Play song in playlist
-.TP
-.B pause
+.RE
+.PP
+\fBpause\fR
+.RS 4
 Pause currently playing song
-.TP
-.B stop
+.RE
+.PP
+\fBstop\fR
+.RS 4
 Stop currently playing song
-.TP
-.B next
+.RE
+.PP
+\fBnext\fR
+.RS 4
 Play next song in playlist
-.TP
-.B prev
+.RE
+.PP
+\fBprev\fR
+.RS 4
 Play previous song in playlist
-.TP
-.B pp
+.RE
+.PP
+\fBpp\fR
+.RS 4
 Toggle play/pause; plays if stopped
-.TP
-.B repeat
+.RE
+.PP
+\fBrepeat\fR
+.RS 4
 Toggle repeat mode
-.TP
-.B random
+.RE
+.PP
+\fBrandom\fR
+.RS 4
 Toggle random mode
-.TP
-.B info
+.RE
+.PP
+\fBinfo\fR
+.RS 4
 Display current song info
-.TP
-.B status
+.RE
+.PP
+\fBstatus\fR
+.RS 4
 Display MPD status
+.RE
+.SH "FILES"
+.PP
+${XDG_CONFIG_HOME}/sonata/sonatarc
+.RS 4
+The per\-user configuration file\&. Usually
+\fBXDG_CONFIG_HOME\fR
+is set to
+${HOME}/\&.config\&.
+.RE
+.SH "ENVIRONMENT"
+.PP
+\fBMPD_HOST\fR, \fBMPD_PORT\fR
+.RS 4
+MPD_sima is following
+\fBmpc\fR
+documentation for
+\fBMPD_HOST\fR
+syntax, see
+\fBmpc\fR(1)
+for further information\&.
+.RE
+.SH "BUGS"
+.PP
+The upstream
+BTS
+can be found at
+\m[blue]\fB\%http://codingteam.net/project/sonata/bugs\fR\m[]\&.
+.SH "FEEDBACK"
+.PP
+The maintainer would be more than happy to here from you, don\*(Aqt hesitate to send feedback on the forge, via the upstream
+BTS, the forum or the chat room, all available on the forge at
+\m[blue]\fB\%http://codingteam.net/project/sonata\fR\m[]\&.
+.PP
+XMPP
+users are welcome to join the dedicated chat room at
+\m[blue]\fBsonata@conference\&.codingteam\&.net\fR\m[]\&.
 .SH "SEE ALSO"
 .PP
-Website: http://sonata.berlios.de
+\fBmpc\fR(1),
+\fBmpd\fR(1)
 .PP
-MPD Website: http://www.musicpd.org
-.SH AUTHOR
-Sonata was written by Scott Horowitz <stonecrest@gmail.com>.
-
+/usr/share/doc/sonata/
+(on Debian system)
+.SH "AUTHOR"
 .PP
-This manual page is currently maintained by Scott Horowitz 
-<stonecrest@gmail.com>. It was originally written by Michal Cihar 
-<michal@cihar.com>.
+\fBJack Kaliko\fR <\&efrim@azylum\&.org\&>
+.RS 4
+.RE
+.SH "COPYRIGHT"
+.br
+Copyright \(co 2010-2011 Jack Kaliko
+.br
+.PP
+Permission is granted to copy, distribute and/or modify this document under the terms of the GNU General Public License, Version 2 or (at your option) any later version published by the Free Software Foundation\&.
+.sp
