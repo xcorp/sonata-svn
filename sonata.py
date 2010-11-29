@@ -28,6 +28,7 @@ import sys, platform, locale, gettext, os
 
 # XXX insert the correct sonata package dir in sys.path
 
+import pycallgraph
 try:
     import sonata
 except ImportError:

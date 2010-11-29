@@ -888,6 +888,7 @@ class Current(object):
 
             treeview.grab_focus()
             treeview.emit("key-press-event", event)
+            print event
             gobject.idle_add(self.filter_entry_grab_focus, widget)
 
     def filter_entry_grab_focus(self, widget):
